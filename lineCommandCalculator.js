@@ -44,17 +44,15 @@ let secondNum = 0;
     }
 
 const getOperator = ()=> {
-    operator = rs.question('What operator would you like to preform? for addition use +, subtraction use -, division use /, multiplication use *, or modulus use %? '
+    operator = rs.question('What operator would you like to preform? for addition use +, subtraction use -, division use /, multiplication use *, or modulo use %: '
     );
     if(!operationsList.includes(operator)){
         console.log('Accepted values are: for addition use +, subtractions use -, division use /, multiplication use *, or modulus use % ')
         getOperator();
     }
      else {
-        firstNum = rs.keyIn('What the first number for this operation? Both numbers are limits between -999 and 999: '),
-        {limit:['$<-999-999>']};
-        secondNum = rs.keyIn("What the second number for this operation? Note: you can't divide by 0: "),
-        {limit:['$<-999-999>']};
+        firstNum = rs.question('Please enter the first number: ')
+        secondNum = rs.question("Please enter the second number, Note: you can't divide/modulo by 0: ")
         selectOperator();
         console.log('Thank for using us as your calculator provider.');
         return;
