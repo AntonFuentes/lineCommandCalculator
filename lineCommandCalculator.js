@@ -27,8 +27,7 @@ let secondNum = 0;
             case '/':
                 if(secondNum !== '0'){
                     console.log("The result is: " + (Number(firstNum) / Number(secondNum)))}
-                    else {console.log("You cannot divide by 0, it will return undefined.");
-                        return};
+                    else {console.log("You cannot divide by 0, it will return undefined.")};
                 break;
             case '*':
                 console.log("The result is: " + (Number(firstNum) * Number(secondNum)));
@@ -37,27 +36,25 @@ let secondNum = 0;
                 if(secondNum !== '0'){
                     console.log("The result is: " + (Number(firstNum) % Number(secondNum)))}
                     else {console.log("You cannot modulo by 0, it will return NaN.");
-                        return};
+                        console.log("Thank for using us as your calculator provider.");
+                        };
                 break;
-            default: console.log('Invalid operator')
+            default: console.log('Invalid operator, Thank for using us as your calculator provider.')
         }
     }
 
 const getOperator = ()=> {
-    operator = rs.question('What operator would you like to preform? for addition use +, subtraction use -, division use /, multiplication use *, or modulo use %: '
-    );
-    if(!operationsList.includes(operator)){
-        console.log('Accepted values are: for addition use +, subtractions use -, division use /, multiplication use *, or modulus use % ')
-        getOperator();
-    }
-     else {
-        firstNum = rs.question('Please enter the first number: ')
-        secondNum = rs.question("Please enter the second number, Note: you can't divide/modulo by 0: ")
+    operator = rs.question('Which operator would you like to preform? for addition use +, subtraction use -, division use /, multiplication use *, or modulo use %: '
+    , {limit: [operationsList],
+    limitMessage: "please select $<operationList>"});
+        firstNum = rs.question('Please enter the first number between 0 and 999: ',
+            {limit: /^[0-999]$/, limitMessage: "This is not a number."});
+        secondNum = rs.question("Please enter the second number between 0 and 999. Note: you can't divide/modulo by 0: ",
+            {limit: /^[0-999]$/, limitMessage: "This is not a number."});
         selectOperator();
         console.log('Thank for using us as your calculator provider.');
         return;
     };
-};
 
 
 
